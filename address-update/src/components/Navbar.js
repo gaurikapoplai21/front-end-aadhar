@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Navbar, Nav, NavDropdown,Container }  from "react-bootstrap"
+import React, { Component } from "react";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 
 export class NavBar extends Component 
 {
@@ -43,4 +43,4 @@ export class NavBar extends Component
     }
 }
 
-export default NavBar
+export default NavBar;

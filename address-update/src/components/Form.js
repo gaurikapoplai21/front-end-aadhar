@@ -24,7 +24,11 @@ export class Form extends Component {
           <input style={this.input} />
         </div>
         <div>
-          <input type="submit" />
+          <input
+            className="btn btn-secondary"
+            style={{ width: 200 }}
+            type="submit"
+          />
         </div>
       </form>
     );
@@ -80,11 +84,23 @@ export class Form extends Component {
             />
           </div>
           <div style={row}>
-            <input type="submit" style={submit} value="Generate OTP" />
+            <input
+              className="btn btn-secondary"
+              style={{ width: 300 }}
+              type="submit"
+              value="Generate OTP"
+            />
           </div>
         </form>
         <div>
-          <Popup trigger={<button style={submit}>Submit OTP</button>} modal>
+          <Popup
+            trigger={
+              <button className="btn btn-secondary" style={{ width: 300 }}>
+                Submit OTP
+              </button>
+            }
+            modal
+          >
             {this.otp()}
           </Popup>
         </div>
