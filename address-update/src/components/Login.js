@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import Navbar from './Navbar.js'
 import Form from './Form.js'
+import Navbar from './Navbar.js'
 
 
 
-export class Login extends Component {
+export class Login extends Component 
+{
+        
     render() {
         return (
             <div>
