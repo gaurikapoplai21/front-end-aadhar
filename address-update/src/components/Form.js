@@ -1,8 +1,19 @@
 import React, { Component } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import axios from 'axios';
+import Toast from './ToastCode'
 
-export class Form extends Component {
+
+export class Form extends Component 
+{
+  constructor(props) 
+  {
+      super(props);
+      this.state = {
+        toast: ""
+      };
+  };
   input = {
     display: "inline-block",
     border: "0px",
@@ -33,7 +44,49 @@ export class Form extends Component {
       </form>
     );
   }
+   getOTP = () =>{
+     // axios POST request
+     //generate txnID on the fly later
+     //var ans = false;
+     const uid = document.getElementById("Aadhar").value;
+     console.log(uid);
+     const options = {
+       url: 'https://stage1.uidai.gov.in/onlineekyc/getOtp/',
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json;charset=UTF-8'
+       },
+       data: {
+         "uid": uid,
+         "txnId": "0acbaa8b-b3ae-433d-a5d2-51250ea8e970"
+       }
+     };
 
+     axios(options)
+       .then(response => 
+      { 
+        if(response.data.status === "Y")
+        {
+          this.setState({
+            toast: "true"
+          })
+        }
+        else
+        {
+          this.setState({
+            toast: "false"
+          })
+        }
+        
+         
+      }, (error) => 
+      {  
+         
+         console.log(error);
+       
+      });
+      console.log(this.state.toast)
+   }
   render() {
     const box = {
       margin: "auto",
@@ -76,22 +129,36 @@ export class Form extends Component {
           <div style={row}>
             <span style={topic}>Aadhar</span> :{" "}
             <input
+              id="Aadhar"
               style={this.input}
-              placeholder="0000 0000 0000"
-              pattern="\d{4}\s\d{4}\s\d{4}"
+              placeholder="000000000000"
+              pattern="\d{4}\d{4}\d{4}"
               autoComplete="off"
               required
             />
           </div>
-          <div style={row}>
+          
+          <div style={row}> {/*how not button, how 2 return statements*/}
+            
             <input
               className="btn btn-secondary"
               style={{ width: 300 }}
-              type="submit"
+              
               value="Generate OTP"
+              onClick = {() =>{
+                this.getOTP()
+                
+                 
+                
+              }}
             />
+            
+           
           </div>
         </form>
+        
+        {(this.state.toast === "true") ? <Toast body="OTP sent successfully!" variant="Success"/> : null}
+        {(this.state.toast === "false") ? <Toast body="Please check your credentials and try again!" variant="Danger"/> : null}
         <div>
           <Popup
             trigger={
@@ -103,6 +170,7 @@ export class Form extends Component {
           >
             {this.otp()}
           </Popup>
+          
         </div>
       </div>
     );

@@ -24,7 +24,7 @@ export class Login extends Component
         <Navbar logintype={this.handleCallback}/>
         <div style={{"margin-top":"30px","font-size":"30px"}}>Login as</div>
         <div style={{ marginBottom: "30px", fontSize: "40px" }}>{this.state.logintype}</div>        
-        <Form />
+        <Form logintype={this.state.logintype}/>
       </div>
     );
   }
