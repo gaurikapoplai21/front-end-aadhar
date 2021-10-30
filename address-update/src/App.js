@@ -1,6 +1,6 @@
 import "./App.css";
 import Login from "./components/Login.js";
-import LandlordDashboard from "./components/LandlordDashboard";
+import IntroducerDashboard from "./components/IntroducerDashboard";
 import RequesterDashboard from "./components/RequesterDashboard";
 import {
   BrowserRouter as Router,
@@ -17,8 +17,8 @@ function App() {
           <Route exact path="/" component={Login} />
           <Route
             exact
-            path="/landlord-dashboard"
-            component={LandlordDashboard}
+            path="/Introducer-dashboard"
+            component={IntroducerDashboard}
           />
           <Route
             exact

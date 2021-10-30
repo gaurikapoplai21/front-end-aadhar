@@ -5,15 +5,15 @@ class LoginNavbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logintype: "Landlord",
+      logintype: "Introducer",
     };
   }
 
   loginchange = () => {
-    if (this.state.logintype === "Landlord") {
+    if (this.state.logintype === "Introducer") {
       this.setState({ logintype: "Requester" });
     } else {
-      this.setState({ logintype: "Landlord" });
+      this.setState({ logintype: "Introducer" });
     }
     this.props.logintype(this.state.logintype);
   };

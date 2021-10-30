@@ -29,13 +29,16 @@ export class Form extends Component {
       <form style={box}>
         <div>OTP</div>
         <div style={{ marginBottom: 10 }}>
-          <input style={this.input} />
+          <input style={this.input} id="actual-otp" />
         </div>
         <div>
           <input
             className="btn btn-secondary"
             style={{ width: 200 }}
             type="submit"
+            onClick={() => {
+              this.submitOTP();
+            }}
           />
         </div>
       </form>
@@ -62,6 +65,42 @@ export class Form extends Component {
     console.log(uid);
     const options = {
       url: "http://localhost:8080/requester/generateOtp/" + uid,
+      method: "GET",
+      headers: {
+        //  'Content-Type': 'application/json;charset=UTF-8',
+        //  'Access-Control-Allow-Origin': '*'
+      },
+      //  data: {
+      //    "uid": uid,
+      //    "txnId": "0acbaa8b-b3ae-433d-a5d2-51250ea8e970"
+      //  }
+    };
+
+    axios(options).then(
+      (response) => {
+        console.log(response);
+
+        if (response.data.success === "Y") {
+          this.setState({
+            toast: "true",
+          });
+        } else {
+          this.setState({
+            toast: "false",
+          });
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    console.log(this.state.toast);
+  };
+  submitOTP = () => {
+    const otpinput = document.getElementById("actual-otp").value;
+    console.log(otpinput);
+    const options = {
+      url: "http://localhost:8080/requester/verifyOtp/" + otpinput,
       method: "GET",
       headers: {
         //  'Content-Type': 'application/json;charset=UTF-8',
@@ -105,7 +144,6 @@ export class Form extends Component {
     );
     console.log(this.state.toast);
   };
-
   render() {
     const box = {
       margin: "auto",
@@ -178,13 +216,17 @@ export class Form extends Component {
         <div>
           <Popup
             trigger={
-              <button className="btn btn-secondary" style={{ width: 300 }}>
+              <button className="btn btn-secondary" style={{ width: 300 }}
+              
+              >
                 Submit OTP
+                
               </button>
             }
             modal
           >
             {this.otp()}
+
           </Popup>
         </div>
       </div>
