@@ -48,24 +48,52 @@ export class Form extends Component
      // axios POST request
      //generate txnID on the fly later
      //var ans = false;
-     const uid = document.getElementById("Aadhar").value;
+    //  const uid = document.getElementById("Aadhar").value;
+    //  console.log(uid);
+    //  const options = {
+    //    url: 'https://stage1.uidai.gov.in/onlineekyc/getOtp/',
+    //    method: 'POST',
+    //    headers: {
+    //      'Content-Type': 'application/json;charset=UTF-8'
+    //    },
+    //    data: {
+    //      "uid": uid,
+    //      "txnId": "0acbaa8b-b3ae-433d-a5d2-51250ea8e970"
+    //    }
+    //  };
+    const uid = document.getElementById("Aadhar").value;
      console.log(uid);
      const options = {
-       url: 'https://stage1.uidai.gov.in/onlineekyc/getOtp/',
-       method: 'POST',
+       url: 'http://localhost:8080/requester/generateOtp/'+uid,
+       method: 'GET',
        headers: {
-         'Content-Type': 'application/json;charset=UTF-8'
+        //  'Content-Type': 'application/json;charset=UTF-8',
+        //  'Access-Control-Allow-Origin': '*' 
        },
-       data: {
-         "uid": uid,
-         "txnId": "0acbaa8b-b3ae-433d-a5d2-51250ea8e970"
-       }
+      //  data: {
+      //    "uid": uid,
+      //    "txnId": "0acbaa8b-b3ae-433d-a5d2-51250ea8e970"
+      //  }
      };
 
      axios(options)
        .then(response => 
       { 
-        if(response.data.status === "Y")
+        // if(response.data.status === "Y" )
+        // {
+        //   this.setState({
+        //     toast: "true"
+        //   })
+        // }
+        // else
+        // {
+        //   this.setState({
+        //     toast: "false"
+        //   })
+        // }
+        console.log(response);
+
+        if(response.data === "OTP Generation Successful" )
         {
           this.setState({
             toast: "true"
