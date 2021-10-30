@@ -20,7 +20,8 @@ export class Listofrequests extends Component
                 <ListGroup >
                     <ListGroup.Item variant="warning">Gaurika Poplai  <Button variant="danger" style={{ float: "right" }} onClick={() => {
                         this.setState({ showModal: true ,option:"Decline"})
-                    }}>Decline</Button><Button variant="success" style={{ float: "right" }}>Accept</Button></ListGroup.Item>
+                    }}>Decline</Button><Button variant="success" style={{ float: "right" }}onClick={() => {
+                        this.setState({ showModal: true ,option:"Accept"})}}>Accept</Button></ListGroup.Item>
                     <ListGroup.Item variant="warning">Prithwish Nag <Button variant="danger" style={{ float: "right" }}>Decline</Button><Button variant="success" style={{ float: "right" }}>Accept</Button></ListGroup.Item>
                     <ListGroup.Item variant="warning">Shubham Gupta  <Button variant="danger" style={{ float: "right" }}>Decline</Button><Button variant="success" style={{ float: "right" }}>Accept</Button></ListGroup.Item>
                     <ListGroup.Item variant="warning">Rahul KR <Button variant="danger" style={{ float: "right" }}>Decline</Button><Button variant="success" style={{ float: "right" }}>Accept</Button></ListGroup.Item>

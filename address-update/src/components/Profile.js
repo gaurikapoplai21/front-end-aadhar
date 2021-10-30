@@ -12,7 +12,7 @@ export class Profile extends Component
         return (
             <div>
                 <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" style={image} src={sample} />
+                    {<Card.Img variant="top" style={image} src={sample} />}
                     <Card.Body>
                         <Card.Title>{/*this.props.name*/}Angelina Jolie</Card.Title>
                         <Card.Text>

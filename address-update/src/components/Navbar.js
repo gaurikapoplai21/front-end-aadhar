@@ -46,7 +46,7 @@ class GenericNavbar extends Component {
   }
 
   render() {
-    const logintype = this.props.logintype;
+    const logintype = this.props.logintype + "  Dashboard";
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
