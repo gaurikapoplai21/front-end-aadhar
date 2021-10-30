@@ -1,35 +1,39 @@
 import React, { Component } from "react";
 
 class AddressVerification extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const box = {
       margin: "auto",
-      width: "400px",
+      width: "500px",
       padding: "20px",
     };
 
     return (
       <div className="card" style={box}>
-        <form autoComplete="off">
-          <div style={{ fontSize: 20, marginBottom: 10 }}>Address</div>
-          <div className="text-secondary" style={{ marginBottom: 10 }}>
-            Address here ...
-          </div>
-          <button
-            type="submit"
+        <div style={{ fontSize: 20, marginBottom: 10 }}>
+          {this.props.index}. Address
+        </div>
+        <div className="text-secondary" style={{ marginBottom: 10 }}>
+          {this.props.address}
+        </div>
+        <div style={{ display: "block" }}>
+          <div
             className="btn btn-secondary"
-            style={{ display: "inline-block" }}
+            style={{ width: "200", display: "inline-block" }}
           >
             Edit
-          </button>
-          <button
-            type="submit"
+          </div>
+          <div
             className="btn btn-secondary"
-            style={{ display: "inline-block", marginLeft: 20 }}
+            style={{ width: "200", display: "inline-block", marginLeft: 20 }}
           >
             Geographic verification
-          </button>
-        </form>
+          </div>
+        </div>
       </div>
     );
   }

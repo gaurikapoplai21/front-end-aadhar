@@ -2,19 +2,37 @@ import React, { Component } from "react";
 import { GenericNavbar } from "./Navbar.js";
 import AddressEntryForm from "./Requester/AddressEntryForm.js";
 import StatusFeed from "./Requester/StatusFeed.js";
-import AddressEditForm from "./Requester/AddressEditForm.js";
-import AddressVerification from "./Requester/AddressVerification.js";
 
-export class RequesterDashboard extends Component {
+class RequesterDashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addressupdate: false,
+    };
+  }
+
+  enableAddressForm = () => {
+    this.setState({ addressupdate: true });
+  };
+
+  enableStatus = () => {
+    this.setState({ addressupdate: false });
+  };
+
   render() {
     return (
       <div>
-        <GenericNavbar logintype="Requester" />
-        <h1>Hello Requester!</h1>
-        <AddressEntryForm />
-        <StatusFeed />
-        <AddressEditForm />
-        <AddressVerification />
+        <GenericNavbar
+          logintype="Requester"
+          addrupdtcallback={this.enableAddressForm}
+          statuscallback={this.enableStatus}
+        />
+        <div style={{ height: 50 }}></div>
+        {this.state.addressupdate ? (
+          <AddressEntryForm addresseditcallback={this.enableAddressEdit} />
+        ) : (
+          <StatusFeed />
+        )}
       </div>
     );
   }

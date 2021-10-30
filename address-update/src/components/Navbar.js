@@ -43,7 +43,24 @@ class LoginNavbar extends Component {
 class GenericNavbar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      addressupdate: false,
+    };
   }
+
+  addressupdate = () => {
+    this.props.addrupdtcallback();
+    this.setState({ addressupdate: true });
+  };
+
+  status = () => {
+    this.props.statuscallback();
+    this.setState({ addressupdate: false });
+  };
+
+  enable = () => {
+    !this.state.addressupdate ? this.addressupdate() : this.status();
+  };
 
   render() {
     const logintype = this.props.logintype;
@@ -55,7 +72,9 @@ class GenericNavbar extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav style={{ "margin-left": "50vw" }}>
               {logintype === "Requester" ? (
-                <Nav.Link>AddressUpdate</Nav.Link>
+                <Nav.Link onClick={this.enable}>
+                  {!this.state.addressupdate ? "AddressUpdate" : "Status"}
+                </Nav.Link>
               ) : (
                 <div />
               )}

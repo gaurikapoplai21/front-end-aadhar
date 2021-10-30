@@ -37,7 +37,7 @@ class AddressEditForm extends Component {
   render() {
     const box = {
       margin: "auto",
-      width: "400px",
+      width: "500px",
       padding: "20px",
     };
 

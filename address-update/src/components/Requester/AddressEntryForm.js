@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 
 class AddressEntryForm extends Component {
+  constructor(props) {
+    super(props);
+    // this.state = {
+    //   addressedit: false,
+    // };
+  }
+
   EntryInputRow({ name, placeholder, pattern }) {
     const topic = {
       display: "inline-block",
@@ -55,7 +62,13 @@ class AddressEntryForm extends Component {
             pattern=""
           />
           <this.EntryInputRow name="Address" placeholder="  ..." pattern=".+" />
-          <button type="submit" className="btn btn-secondary">
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onClick={() => {
+              this.props.addresseditcallback();
+            }}
+          >
             Submit
           </button>
         </form>
