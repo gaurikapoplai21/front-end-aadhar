@@ -9,6 +9,8 @@ export class Form extends Component {
     super(props);
     this.state = {
       toast: "",
+      uid:"",
+      txnid:"",
     };
   }
   input = {
@@ -66,10 +68,10 @@ export class Form extends Component {
     const options = {
       url: "http://localhost:8080/requester/generateOtp/" + uid,
       method: "GET",
-      headers: {
+      // headers: {
         //  'Content-Type': 'application/json;charset=UTF-8',
         //  'Access-Control-Allow-Origin': '*'
-      },
+      // },
       //  data: {
       //    "uid": uid,
       //    "txnId": "0acbaa8b-b3ae-433d-a5d2-51250ea8e970"
@@ -78,11 +80,13 @@ export class Form extends Component {
 
     axios(options).then(
       (response) => {
-        console.log(response);
-
+        console.log(response.data);
+        // const obj = JSON.parse(response.data);  
         if (response.data.success === "Y") {
           this.setState({
             toast: "true",
+            uid: response.data.uid,
+            txnid: response.data.txnid
           });
         } else {
           this.setState({
@@ -100,7 +104,7 @@ export class Form extends Component {
     const otpinput = document.getElementById("actual-otp").value;
     console.log(otpinput);
     const options = {
-      url: "http://localhost:8080/requester/verifyOtp/" + otpinput,
+      url: "http://localhost:8080/requester/verifyOtp/" +this.uid+"/"+this.txnid+"/"+ otpinput,
       method: "GET",
       headers: {
         //  'Content-Type': 'application/json;charset=UTF-8',
@@ -128,21 +132,17 @@ export class Form extends Component {
         // }
         console.log(response);
 
-        if (response.data === "OTP Generation Successful") {
-          this.setState({
-            toast: "true",
-          });
+        if (response.data === "Authentication Successful") {
+          console.log("auth complete");
         } else {
-          this.setState({
-            toast: "false",
-          });
+          console.log("auth NOT complete");
         }
       },
       (error) => {
         console.log(error);
       }
     );
-    console.log(this.state.toast);
+    // console.log(this.state.toast);
   };
   render() {
     const box = {
