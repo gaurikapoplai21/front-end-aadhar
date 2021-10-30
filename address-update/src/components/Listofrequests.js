@@ -39,37 +39,53 @@ export class Listofrequests extends Component {
           </ListGroup.Item>
           <ListGroup.Item variant="warning">
             Prithwish Nag{" "}
-            <Button variant="danger" style={{ float: "right" }}>
+            <Button variant="danger" style={{ float: "right" }}  onClick={() => {
+                this.setState({ showModal: true, option: "Decline" });
+              }}>
               Decline
             </Button>
-            <Button variant="success" style={{ float: "right" }}>
+            <Button variant="success" style={{ float: "right" }}  onClick={() => {
+                this.setState({ showModal: true, option: "Accept" });
+              }}>
               Accept
             </Button>
           </ListGroup.Item>
           <ListGroup.Item variant="warning">
             Shubham Gupta{" "}
-            <Button variant="danger" style={{ float: "right" }}>
+            <Button variant="danger" style={{ float: "right" }}  onClick={() => {
+                this.setState({ showModal: true, option: "Decline" });
+              }}>
               Decline
             </Button>
-            <Button variant="success" style={{ float: "right" }}>
+            <Button variant="success" style={{ float: "right" }}  onClick={() => {
+                this.setState({ showModal: true, option: "Accept" });
+              }}>
               Accept
             </Button>
           </ListGroup.Item>
           <ListGroup.Item variant="warning">
             Rahul KR{" "}
-            <Button variant="danger" style={{ float: "right" }}>
+            <Button variant="danger" style={{ float: "right" }}  onClick={() => {
+                this.setState({ showModal: true, option: "Decline" });
+              }}>
               Decline
             </Button>
-            <Button variant="success" style={{ float: "right" }}>
+            <Button variant="success" style={{ float: "right" }}  onClick={() => {
+                this.setState({ showModal: true, option: "Accept" });
+              }}>
               Accept
             </Button>
           </ListGroup.Item>
           <ListGroup.Item variant="warning">
             Rikesh{" "}
-            <Button variant="danger" style={{ float: "right" }}>
+            <Button variant="danger" style={{ float: "right" }} onClick={() => {
+                this.setState({ showModal: true, option: "Decline" });
+              }}>
               Decline
             </Button>
-            <Button variant="success" style={{ float: "right" }}>
+            <Button variant="success" style={{ float: "right" }}  onClick={() => {
+                this.setState({ showModal: true, option: "Accept" });
+              }}>
               Accept
             </Button>
           </ListGroup.Item>
