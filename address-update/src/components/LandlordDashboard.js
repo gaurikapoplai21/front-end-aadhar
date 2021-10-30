@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Profile from './Profile'
-import Navbar from './LandlordNavbar'
+import {GenericNavbar} from './Navbar'
 import Listofrequests from './Listofrequests'
 
 export class LandlordDashboard extends Component 
@@ -35,7 +35,7 @@ export class LandlordDashboard extends Component
         
         return (
             <div>
-               <Navbar />
+                <GenericNavbar logintype="Landlord" />
                
                 <div style={profile}> 
                 <Profile />
@@ -49,5 +49,4 @@ export class LandlordDashboard extends Component
         )
     }
 }
-
-export default LandlordDashboard
+export default LandlordDashboard;

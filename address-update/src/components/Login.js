@@ -1,30 +1,30 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar.js";
+import { LoginNavbar } from "./Navbar.js";
 import Form from "./Form.js";
 
-export class Login extends Component 
-{
-    constructor(props) {
-        super(props);
-        this.state = {
-            logintype: "Requester"
-        };
-        //this.handleCallback = this.handleCallback.bind(this)
+export class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      logintype: "Requester",
+    };
+  }
 
-    }
-    handleCallback = (childData) => {
-        //console.log("here")
-        console.log(childData)
-        this.setState({ logintype: childData })
-    }
+  handleCallback = (childData) => {
+    this.setState({ logintype: childData });
+  };
 
   render() {
     return (
       <div>
-        <Navbar logintype={this.handleCallback}/>
-        <div style={{"margin-top":"30px","font-size":"30px"}}>Login as</div>
-        <div style={{ marginBottom: "30px", fontSize: "40px" }}>{this.state.logintype}</div>        
-        <Form logintype={this.state.logintype}/>
+        <LoginNavbar logintype={this.handleCallback} />
+        <div style={{ "margin-top": "30px", "font-size": "30px" }}>
+          Login as
+        </div>
+        <div style={{ marginBottom: "30px", fontSize: "40px" }}>
+          {this.state.logintype}
+        </div>
+        <Form logintype={this.state.logintype} />
       </div>
     );
   }
