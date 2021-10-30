@@ -51,7 +51,7 @@ class StatusFeed extends Component {
         >
           {address}
         </div>
-        <div style={{ display: "inline-block", width: 80 }} />
+        <div style={{ display: "inline-block", width: 200 }} />
 
         {status === 0 ? (
           <div className="text-danger" style={{ display: "inline-block" }}>
@@ -65,7 +65,7 @@ class StatusFeed extends Component {
           <div
             className="btn btn-secondary"
             onClick={() => {
-              this.state.addressshow != index
+              this.state.addressshow !== index
                 ? this.setState({ addressshow: index })
                 : this.resetAddressShow();
             }}

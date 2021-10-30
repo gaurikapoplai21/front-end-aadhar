@@ -115,12 +115,6 @@ export class Form extends Component {
       border: "5px solid grey",
     };
 
-    const submit = {
-      width: 250,
-      padding: 10,
-      borderRadius: 10,
-    };
-
     const topic = {
       display: "inline-block",
       width: 75,
