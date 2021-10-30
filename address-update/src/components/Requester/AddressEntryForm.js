@@ -43,7 +43,6 @@ class AddressEntryForm extends Component {
 
   render() {
     const box = {
-      margin: "auto",
       width: "400px",
       padding: "20px",
     };

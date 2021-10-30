@@ -71,7 +71,7 @@ class GenericNavbar extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav style={{ "margin-left": "50vw" }}>
-              {logintype === "Requester" ? (
+              {this.props.logintype === "Requester" ? (
                 <Nav.Link onClick={this.enable}>
                   {!this.state.addressupdate ? "AddressUpdate" : "Status"}
                 </Nav.Link>

@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class AddressEditForm extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   EntryInputRow({ name, placeholder, pattern }) {
     const topic = {
       display: "inline-block",
@@ -36,9 +40,9 @@ class AddressEditForm extends Component {
 
   render() {
     const box = {
-      margin: "auto",
       width: "500px",
       padding: "20px",
+      marginTop: "20px",
     };
 
     return (
@@ -53,9 +57,11 @@ class AddressEditForm extends Component {
             Submit
           </button>
           <button
-            type="submit"
             className="btn btn-secondary"
             style={{ display: "inline-block", marginLeft: 20 }}
+            onClick={() => {
+              this.props.hideeditcallback();
+            }}
           >
             Cancel
           </button>

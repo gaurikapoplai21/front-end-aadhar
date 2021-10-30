@@ -19,11 +19,20 @@ class StatusFeed extends Component {
         ["Address 7", 0],
         ["Address 8", 3],
       ],
+      edit: false,
     };
   }
 
   resetAddressShow = () => {
     this.setState({ addressshow: -1 });
+  };
+
+  enableEdit = () => {
+    this.setState({ edit: true });
+  };
+
+  disableEdit = () => {
+    this.setState({ edit: false });
   };
 
   feed = ({ status, index, address }) => {
@@ -108,13 +117,17 @@ class StatusFeed extends Component {
             {this.getAddressComponent()}
           </ul>
         </div>
-        {this.state.addressshow != -1 ? (
-          <AddressVerification
-            index={this.state.addressshow}
-            address={this.state.addresses[this.state.addressshow - 1][0]}
-          />
+        {this.state.addressshow !== -1 ? (
+          this.state.edit ? (
+            <AddressEditForm hideeditcallback={this.disableEdit} />
+          ) : (
+            <AddressVerification
+              index={this.state.addressshow}
+              address={this.state.addresses[this.state.addressshow - 1][0]}
+              showeditcallback={this.enableEdit}
+            />
+          )
         ) : undefined}
-        <AddressEditForm />
       </div>
     );
   }

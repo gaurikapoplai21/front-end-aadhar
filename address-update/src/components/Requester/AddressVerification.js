@@ -7,9 +7,9 @@ class AddressVerification extends Component {
 
   render() {
     const box = {
-      margin: "auto",
       width: "500px",
       padding: "20px",
+      marginTop: "20px",
     };
 
     return (
@@ -24,6 +24,9 @@ class AddressVerification extends Component {
           <div
             className="btn btn-secondary"
             style={{ width: "200", display: "inline-block" }}
+            onClick={() => {
+              this.props.showeditcallback();
+            }}
           >
             Edit
           </div>
